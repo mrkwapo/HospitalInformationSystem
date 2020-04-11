@@ -14,8 +14,8 @@ import com.dracodess.pathologyservice.models.Disease;
 public class PathologyResource {
 	
 	List<Disease> diseases = Arrays.asList(
-			new Disease("P1", "COVID-19"),
-			new Disease("P2", "Malaria")
+			new Disease("P1", "COVID-19", "Unknown"),
+			new Disease("P2", "Malaria", "Malaria Vaccine")
 			);
 	
 	@RequestMapping("/diseases")
