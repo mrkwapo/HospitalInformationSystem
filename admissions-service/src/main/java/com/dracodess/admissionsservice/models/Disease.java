@@ -1,4 +1,4 @@
-package com.dracodess.pathologyservice.models;
+package com.dracodess.admissionsservice.models;
 
 public class Disease {
 

@@ -8,22 +8,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dracodess.pathologyservice.models.Disease;
+import com.dracodess.pathologyservice.models.DiseaseList;
 
 @RestController
 @RequestMapping("/pathology")
-public class PathologyResource {
+public class PathologyResource {	
+
+	//Hardcoded list of diseases 
+		List<Disease> diseases = Arrays.asList(
+				new Disease("P1", "COVID-19", "unknown"),
+				new Disease("P2", "fever", "advil"),
+				new Disease("P3", "cough", "soup")
+				);
 	
-	List<Disease> diseases = Arrays.asList(
-			new Disease("P1", "COVID-19", "Unknown"),
-			new Disease("P2", "Malaria", "Malaria Vaccine")
-			);
-	
+	//Allows Pathology Miscroservice to GET all diseases
 	@RequestMapping("/diseases")
-	public List<Disease> getDiseases(){			
+	public DiseaseList getDiseases(){
+		DiseaseList diseaseList = new DiseaseList();
+		diseaseList.setDiseases(diseases);
 		
-		return diseases;		
+		return diseaseList;		
 	}
 	
+	//Allows Pathology microservice to GET a disease by its ID
 	@RequestMapping("/diseases/{Id}")
 	public Disease getDiseaseById(@PathVariable("Id") String Id) {		
 		Disease d = diseases.stream()
@@ -32,5 +39,4 @@ public class PathologyResource {
 				.orElse(null);
 		return d;
 	}
-
 }

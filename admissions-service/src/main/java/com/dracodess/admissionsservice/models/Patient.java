@@ -4,15 +4,15 @@ package com.dracodess.admissionsservice.models;
 public class Patient {
 	private String Id;
 	private String name;
-	private String nationality;
+	private String age;
 	
 	public Patient() {
 		
 	}
-	public Patient(String id, String name, String nationality) {
+	public Patient(String id, String name, String age) {
 		Id = id;
 		this.name = name;
-		this.nationality = nationality;
+		this.age = age;
 	}
 
 	public String getId() {
@@ -31,12 +31,12 @@ public class Patient {
 		this.name = name;
 	}
 
-	public String getNationality() {
-		return nationality;
+	public String getAge() {
+		return age;
 	}
 
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
+	public void setAge(String age) {
+		this.age = age;
 	}
 	
 	
