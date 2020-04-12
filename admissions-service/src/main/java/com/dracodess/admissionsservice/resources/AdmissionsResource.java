@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.dracodess.admissionsservice.models.Disease;
 import com.dracodess.admissionsservice.models.DiseaseList;
 import com.dracodess.admissionsservice.models.EmployeesList;
 import com.dracodess.admissionsservice.models.Patient;
@@ -53,7 +52,7 @@ public class AdmissionsResource {
 	//This gives admissions microservice access to HR microservice to GET all physicians 
 	@RequestMapping("/physicians")
 	public EmployeesList getPhysicians(){
-		EmployeesList employeesList = restTemplate.getForObject("http://localhost:8082/hr/employees", EmployeesList.class);
+		EmployeesList employeesList = restTemplate.getForObject("http://hr-service/hr/employees", EmployeesList.class);
 		
 		return employeesList;
 	}
@@ -61,7 +60,7 @@ public class AdmissionsResource {
 	//This gives admissions microservice access to pathology microservice to GET all diseases
 	@RequestMapping("/diseases")
 	public DiseaseList getDiseases() {
-		DiseaseList diseaseList = restTemplate.getForObject("http://localhost:8083/pathology/diseases", DiseaseList.class);
+		DiseaseList diseaseList = restTemplate.getForObject("http://pathology-service/pathology/diseases", DiseaseList.class);
 				
 		return diseaseList;
 	}
